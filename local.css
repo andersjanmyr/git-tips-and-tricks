@@ -1,0 +1,11 @@
+.reveal pre {
+    width: 100%;
+    margin: 50px auto;
+    font-size: xx-large;
+    line-height: 120%;
+}
+
+.reveal h2, .reveal h3 {
+    text-transform: none;
+}
+

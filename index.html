@@ -16,6 +16,7 @@
 
 <!-- For syntax highlighting -->
 <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+<link rel="stylesheet" href="local.css">
 
 <!-- If the query includes 'print-pdf', use the PDF print sheet -->
 <script>
@@ -39,6 +40,87 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
             ### http://anders.janmyr.com
             ### @andersjanmyr
             ### anders.janmyr@jayway.com
+        </section>
+
+        <section>
+            <section data-markdown>
+                # Basics
+            </section>
+            <section data-markdown>
+                # Nothing Committed is *Ever* Lost
+            </section>
+            <section data-markdown>
+                # DAG
+                ## Directed Acyclic Graph
+            </section>
+            <section data-markdown>
+                # DAG
+                ![git-dag](git-dag.jpg)
+            </section>
+            <section data-markdown>
+                # Three Parts
+                * HEAD
+                * Index
+                * Working Dir
+            </section>
+            <section data-markdown>
+                # `git add`
+                ## Adds files to the index
+            </section>
+            <section data-markdown>
+                # `git commit`
+                ## Adds index files to the HEAD
+            </section>
+            <section data-markdown>
+                # `git reset`
+                ## Removes files from HEAD or index
+            </section>
+            <section data-markdown>
+                # Nothing Committed is *Ever* Lost
+            </section>
+        </section>
+
+        <section>
+            <section data-markdown>
+                # Finding in Git
+            </section>
+            <section data-markdown>
+                # Where is my file?
+
+                    $ git ls-files | grep security
+                    lib/dynamo-db/security.js
+                    test/security-test.jsP
+            </section>
+            <section data-markdown>
+                # In what file can I find "crypt"
+
+                    $ git grep -n crypt
+                    lib/dynamo-db/security.js:2:var crypto = require('crypto');
+                    lib/dynamo-db/security.js:15:   var hmac = crypto.createHmac('sha256', key);
+
+                ### `-n` - show line numbers
+            </section>
+            <section data-markdown>
+                # DAG
+            </section>
+            <section data-markdown>
+                # Three Parts
+            </section>
+            <section data-markdown>
+                # `git add`
+                ## Adds files to the index
+            </section>
+            <section data-markdown>
+                # `git commit`
+                ## Adds index files to the HEAD
+            </section>
+            <section data-markdown>
+                # `git reset`
+                ## Removes files from HEAD or index
+            </section>
+            <section data-markdown>
+                # Nothing Committed is *Ever* Lost
+            </section>
         </section>
 
         <section data-markdown>
