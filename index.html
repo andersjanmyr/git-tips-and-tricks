@@ -92,7 +92,7 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
                     test/security-test.jsP
             </section>
             <section data-markdown>
-                # In what file can I find "crypt"
+                # In what file can I find "crypt"?
 
                     $ git grep -n crypt
                     lib/dynamo-db/security.js:2:var crypto = require('crypto');
@@ -101,25 +101,133 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
                 ### `-n` - show line numbers
             </section>
             <section data-markdown>
-                # DAG
+                # Find "type"
+                ## in revisions `master` and `8f0fb7f`.
+
+                    git grep -l type  master 8f0fb7f
+                    master:lib/dynamo-db/index.js
+                    master:lib/dynamo-db/security.js
+                    master:package.json
+                    8f0fb7f:lib/dynamo-db/index.js
+                    8f0fb7f:package.json
+
+                ### `-l` - show filenames only
             </section>
             <section data-markdown>
-                # Three Parts
+                # Who deleted my file?
+
+                    $ git log --diff-filter=D -- test/create-table-test.js
+                    commit ba6c4d8bc165b8fb8208979c3e5513bd53477d51
+                    Author: Anders Janmyr anders@janmyr.com
+                    Date:   Wed Jan 25 09:46:52 2012 +0100
+
+                        Removed the stupid failing test.
+
+                ### --diff-filter - supports D, A, C, M, R
+                ### --summary - adds information about the files
             </section>
             <section data-markdown>
-                # `git add`
-                ## Adds files to the index
+                # When was it added?
+                ## with partial name "inte"
+
+                    $ git log --diff-filter=A --name-status |grep -C 6 inte
+                    commit 09420cfea8c7b569cd47f690104750fec358a10a
+                    Author: Anders Janmyr anders@janmyr.com
+                    Date:   Tue Jan 24 16:23:52 2012 +0100
+
+                        Extracted integration test
+
+                    A integration-test/sts-test.js
+
+                    commit 205db3965dec6c2c4c7b2bb75387a591d49e1951
+                    Author: Anders Janmyr anders@janmyr.com
             </section>
             <section data-markdown>
-                # `git commit`
-                ## Adds index files to the HEAD
+                # Who changed that line?
+
+                    $ git blame test/security-test.js
+                    205db396 (Anders Janmyr 2012-01-21 10:03:59 +0100  1) var vows = require('vows'),
+                    205db396 (Anders Janmyr 2012-01-21 10:03:59 +0100  2)     assert = require('assert');
+                    205db396 (Anders Janmyr 2012-01-21 10:03:59 +0100  3) 
+                    09420cfe (Anders Janmyr 2012-01-24 16:23:52 +0100  4) var access = 'access';
+                    09420cfe (Anders Janmyr 2012-01-24 16:23:52 +0100  5) var secret = 'secret'; 
             </section>
             <section data-markdown>
-                # `git reset`
-                ## Removes files from HEAD or index
+                # Who deleted that line?
+
+                    $ git blame --reverse head~6..head security-test.js
+                    558b8e7f (Anders Janmyr 2012-01-25 16:53:52 +0100  1) var vows = require('vows'),
+                    558b8e7f (Anders Janmyr 2012-01-25 16:53:52 +0100  2)     assert = require('assert');
+                    558b8e7f (Anders Janmyr 2012-01-25 16:53:52 +0100  3) 
+                    093c13e9 (Anders Janmyr 2012-01-24 17:26:09 +0100  4) var Security = require('dynamo-db').Security;
+                    ba6c4d8b (Anders Janmyr 2012-01-25 09:46:52 +0100  5) 
+                    ^b96c68b (Anders Janmyr 2012-01-21 12:33:50 +0100  6) var access = process.env['S3_KEY'];
+                    ^b96c68b (Anders Janmyr 2012-01-21 12:33:50 +0100  7) var secret = process.env['S3_SECRET'];
+                    558b8e7f (Anders Janmyr 2012-01-25 16:53:52 +0100  8) 
             </section>
             <section data-markdown>
-                # Nothing Committed is *Ever* Lost
+                # What commits contain the string?
+
+                    $ git log -Saws --diff-filter=M --patch
+                    commit b96c68b839f204b310b79570bc3d27dc93cff588
+
+                    diff --git a/lib/dynamo-db/security.js b/lib/dynamo-db/security.js
+                    @@ -57,9 +58,10 @@ mod.url = function(host, path,...
+                    
+                    var extParams = _.extend({}, this...
+                    -  var signedParams = 'iam.amazonaws.com'
+                    -  return request({ method: method,...
+                    +  var signedParams = this.signedPa...
+                    ...
+            </section>
+        </section>
+
+        <section>
+            <section data-markdown>
+                # History
+            </section>
+            <section data-markdown>
+                # git rebase
+                ![git-rebase.png](git-rebase.png)
+            </section>
+            <section data-markdown>
+                # git commit --amend
+            </section>
+            <section data-markdown>
+                # git rebase -i
+                ![git-rebase-interactive.png](git-rebase-interactive.png)
+            </section>
+            <section data-markdown>
+                # git cherry-pick
+                ![cherrypick.png](cherrypick.png)
+            </section>
+            <section data-markdown>
+                # git reset
+            </section>
+            <section data-markdown>
+                # git add -p
+            </section>
+            <section data-markdown>
+                # git reflog
+            </section>
+            <section data-markdown>
+                # git log -g
+            </section>
+        </section>
+
+        <section>
+            <section data-markdown>
+                # Config
+            </section>
+            <section data-markdown>
+            </section>
+            <section data-markdown>
+            </section>
+            <section data-markdown>
+            </section>
+            <section data-markdown>
+            </section>
+            <section data-markdown>
             </section>
         </section>
 
