@@ -76,6 +76,11 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
                 ## Removes files from HEAD or index
             </section>
             <section data-markdown>
+                # Branch
+                ## Pointer to a commit
+                ### Moves with most commands
+            </section>
+            <section data-markdown>
                 # Nothing Committed is *Ever* Lost
             </section>
         </section>
@@ -228,7 +233,24 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
             <section data-markdown>
             </section>
             <section data-markdown>
+                # git-bash-completion
             </section>
+            <section data-markdown>
+                # Prompt
+                ## `__git_ps1`
+
+                    function prompt {
+                        local sha=$(git rev-parse --short HEAD 2>/dev/null)
+                        export PS1="[\!:\W ${sha}$(__git_ps1 '@%s')]\n$sign "
+                    }
+
+                    export GIT_PS1_SHOWDIRTYSTATE=true
+                    export GIT_PS1_SHOWUNTRACKEDFILES=true
+                    PROMPT_COMMAND='prompt'
+
+                    [511:git-tips-and-tricks 50e6e0c@master *%]
+                    $
+</section>
         </section>
 
         <section>
