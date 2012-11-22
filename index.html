@@ -82,6 +82,38 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
 
         <section>
             <section data-markdown>
+                # History
+            </section>
+            <section data-markdown>
+                # git rebase
+                ![git-rebase.png](git-rebase.png)
+            </section>
+            <section data-markdown>
+                # git commit --amend
+            </section>
+            <section data-markdown>
+                # git rebase -i
+                ![git-rebase-interactive.png](git-rebase-interactive.png)
+            </section>
+            <section data-markdown>
+                # git cherry-pick
+                ![cherrypick.png](cherrypick.png)
+            </section>
+            <section data-markdown>
+                # git reset
+            </section>
+            <section data-markdown>
+                # git add -p
+            </section>
+            <section data-markdown>
+                # git reflog
+            </section>
+            <section data-markdown>
+                # git log -g
+            </section>
+        </section>
+        <section>
+            <section data-markdown>
                 # Finding in Git
             </section>
             <section data-markdown>
@@ -148,9 +180,9 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
                     $ git blame test/security-test.js
                     205db396 (Anders Janmyr 2012-01-21 10:03:59 +0100  1) var vows = require('vows'),
                     205db396 (Anders Janmyr 2012-01-21 10:03:59 +0100  2)     assert = require('assert');
-                    205db396 (Anders Janmyr 2012-01-21 10:03:59 +0100  3) 
+                    205db396 (Anders Janmyr 2012-01-21 10:03:59 +0100  3)
                     09420cfe (Anders Janmyr 2012-01-24 16:23:52 +0100  4) var access = 'access';
-                    09420cfe (Anders Janmyr 2012-01-24 16:23:52 +0100  5) var secret = 'secret'; 
+                    09420cfe (Anders Janmyr 2012-01-24 16:23:52 +0100  5) var secret = 'secret';
             </section>
             <section data-markdown>
                 # Who deleted that line?
@@ -158,12 +190,12 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
                     $ git blame --reverse head~6..head security-test.js
                     558b8e7f (Anders Janmyr 2012-01-25 16:53:52 +0100  1) var vows = require('vows'),
                     558b8e7f (Anders Janmyr 2012-01-25 16:53:52 +0100  2)     assert = require('assert');
-                    558b8e7f (Anders Janmyr 2012-01-25 16:53:52 +0100  3) 
+                    558b8e7f (Anders Janmyr 2012-01-25 16:53:52 +0100  3)
                     093c13e9 (Anders Janmyr 2012-01-24 17:26:09 +0100  4) var Security = require('dynamo-db').Security;
-                    ba6c4d8b (Anders Janmyr 2012-01-25 09:46:52 +0100  5) 
+                    ba6c4d8b (Anders Janmyr 2012-01-25 09:46:52 +0100  5)
                     ^b96c68b (Anders Janmyr 2012-01-21 12:33:50 +0100  6) var access = process.env['S3_KEY'];
                     ^b96c68b (Anders Janmyr 2012-01-21 12:33:50 +0100  7) var secret = process.env['S3_SECRET'];
-                    558b8e7f (Anders Janmyr 2012-01-25 16:53:52 +0100  8) 
+                    558b8e7f (Anders Janmyr 2012-01-25 16:53:52 +0100  8)
             </section>
             <section data-markdown>
                 # What commits contain the string?
@@ -173,7 +205,7 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
 
                     diff --git a/lib/dynamo-db/security.js b/lib/dynamo-db/security.js
                     @@ -57,9 +58,10 @@ mod.url = function(host, path,...
-                    
+
                     var extParams = _.extend({}, this...
                     -  var signedParams = 'iam.amazonaws.com'
                     -  return request({ method: method,...
@@ -182,42 +214,29 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
             </section>
         </section>
 
+
         <section>
             <section data-markdown>
-                # History
+                # Config
             </section>
             <section data-markdown>
-                # git rebase
-                ![git-rebase.png](git-rebase.png)
             </section>
             <section data-markdown>
-                # git commit --amend
             </section>
             <section data-markdown>
-                # git rebase -i
-                ![git-rebase-interactive.png](git-rebase-interactive.png)
             </section>
             <section data-markdown>
-                # git cherry-pick
-                ![cherrypick.png](cherrypick.png)
             </section>
             <section data-markdown>
-                # git reset
-            </section>
-            <section data-markdown>
-                # git add -p
-            </section>
-            <section data-markdown>
-                # git reflog
-            </section>
-            <section data-markdown>
-                # git log -g
             </section>
         </section>
 
         <section>
             <section data-markdown>
-                # Config
+                # Github
+                ## The `hub` command
+
+                    $ brew install hub
             </section>
             <section data-markdown>
             </section>
