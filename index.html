@@ -225,10 +225,45 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
                 # Config
             </section>
             <section data-markdown>
+                # Global
+                ## `~/.gitconfig
+
+                    $ git config --global -l
+                    user.name=Anders Janmyr
+                    user.email=anders@janmyr.com
+                    ...
+                # Local
+                ## `./.git/config`
+
+                    $ git config --local -l
+                    remote.origin.url=git@github.com:andersjanmyr/git-...
+                    remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
+                    ...
             </section>
             <section data-markdown>
+                # git clone explained
+                    $ git clone REPO
+
+                    $ git init
+                    $ git remote add origin REPO
+                    $ git fetch
+                    $ git merge origin/master
+                    $ git branch -u origin/master
             </section>
             <section data-markdown>
+                # git clone explained
+
+                    $ diff gitinit/.git/config gitclone/.git/config
+                    7a8,13
+                    [remote "origin"]
+                        url = https://github.com/andersjanmyr/...
+                        fetch = +refs/heads/*:refs/remotes/origin/*
+                    [branch "master"]
+                        remote = origin
+                        merge = refs/heads/master
+            </section>
+            <section data-markdown>
+
             </section>
             <section data-markdown>
             </section>
