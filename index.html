@@ -360,6 +360,11 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
                     [alias]
                     au = add -u
 
+                ## Explanation
+
+                    # Adds all tracked files to the index
+                    $ git add -u
+
                 *Use `--global` for aliases*
 
             </section>
@@ -411,6 +416,19 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
                 %ar               = Author date, relative</code></pre>
             </section>
 
+            <section data-markdown>
+                # Shell functions
+                ## When an alias can't cut it
+
+                    # Commit changes and quote all args as message
+                    function gg() {
+                        git commit -m "$*"
+                    }
+
+                Usage (no quotes :)
+
+                    $ gg Commit this awesome shell function
+            </section>
         </section>
         <section>
             <section data-markdown>
