@@ -112,10 +112,34 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
             <section data-markdown>
                 # git reset
 
+                    # Moves the HEAD pointer back 4 steps
+                    $ git reset HEAD~4
 
+                    # Does NOT change working dir
+                    $ git reset --mixed HEAD~4
+
+                    # And adds the files to the index
+                    # Does NOT change working dir
+                    $ git reset --soft HEAD~4
+
+                    # Also CHANGES working dir
+                    $ git reset --hard HEAD~4
             </section>
             <section data-markdown>
                 # git add -p
+
+                    # Moves the HEAD pointer back 4 steps
+                    $ git add -p
+
+                    # Does NOT change working dir
+                    $ git reset --mixed HEAD~4
+
+                    # And adds the files to the index
+                    # Does NOT change working dir
+                    $ git reset --soft HEAD~4
+
+                    # Also CHANGES working dir
+                    $ git reset --hard HEAD~4
             </section>
             <section data-markdown>
                 # git reflog
