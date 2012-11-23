@@ -91,6 +91,8 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
             <section data-markdown>
                 # git rebase
                 ![git-rebase.png](git-rebase.png)
+
+                `git rebase` does NOT change the committed files
             </section>
             <section data-markdown>
                 # git commit --amend
@@ -100,14 +102,20 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
 
                     # And resuse the commit message
                     $ git commit --amend -C HEAD
+
+                `git commit --amend` does NOT change the committed files
             </section>
             <section data-markdown>
                 # git rebase -i
                 ![git-rebase-interactive.png](git-rebase-interactive.png)
+
+                `git rebase` does NOT change the committed files
             </section>
             <section data-markdown>
                 # git cherry-pick
                 ![cherrypick.png](cherrypick.png)
+
+                `git cherry-pick` does NOT change the committed files
             </section>
             <section data-markdown>
                 # git add -p
@@ -149,6 +157,8 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
 
                     # Also CHANGES working dir
                     $ git reset --hard HEAD~4
+
+                `git reset` does NOT change the committed files
             </section>
             <section data-markdown>
                 # git reflog
