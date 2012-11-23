@@ -73,7 +73,7 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
             </section>
             <section data-markdown>
                 # `git reset`
-                ## Removes files from HEAD or index
+                ## Moves the head pointer
             </section>
             <section data-markdown>
                 # Branch
@@ -219,26 +219,11 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
             </section>
         </section>
 
-
         <section>
             <section data-markdown>
-                # Config
-            </section>
-            <section data-markdown>
-                # Global
-                ## `~/.gitconfig
+                # Under the Hood
+                ![](under-the-hood-sally-storey-jones.jpg)
 
-                    $ git config --global -l
-                    user.name=Anders Janmyr
-                    user.email=anders@janmyr.com
-                    ...
-                # Local
-                ## `./.git/config`
-
-                    $ git config --local -l
-                    remote.origin.url=git@github.com:andersjanmyr/git-...
-                    remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
-                    ...
             </section>
             <section data-markdown>
                 # git clone explained
@@ -251,7 +236,8 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
                     $ git branch -u origin/master
             </section>
             <section data-markdown>
-                # git clone explained
+                # git diff
+                ## `./git/config`
 
                     $ diff gitinit/.git/config gitclone/.git/config
                     7a8,13
@@ -262,31 +248,133 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
                         remote = origin
                         merge = refs/heads/master
             </section>
-            <section data-markdown>
+            <section>
+                <table>
+                    <tbody>
+                    <thead>
+                    <tr>
+                        <th>Command</th>
+                        <th>Effect</th>
+                    </tr>
+                    </thead>
+                    <tr class='fragment'>
+                        <td><pre><code>git init</code></pre></td>
+                        <td>
+                            <pre><code>Initialized empty Git repository</code></pre>
+                        </td>
+                    </tr>
+                    <tr class='fragment'>
+                        <td><pre><code>git remote add orign REPO</code><pre></td>
+                        <td>
+                            <pre><code>[remote "origin"]
+    url = https://github.com/andersjanmyr/...
+    fetch = +refs/heads/*:refs/remotes/origin/*</code></pre>
+                        </td>
+                    </tr>
+                    <tr class='fragment'>
+                        <td><pre><code>git fetch</code><pre></td>
+                        <td>
+                            <pre><code>From github.com:andersjanmyr/git-tips-and-tricks
+* [new branch]      master     -> origin/master</code></pre>
+                        </td>
+                    </tr>
+                    <tr class='fragment'>
+                        <td><pre><code>git merge origin/master</code><pre></td>
+                        <td>
+                            Merges local branch <code>origin/master</code> into
+                            <code>master</code>. <em>Before this, there is no
+                            `master`.</em>
+                        </td>
+                    </tr>
+                    <tr class='fragment'>
+                        <td><pre><code>git branch -u origin/master</code><pre></td>
+                        <td>
+                            <pre><code>[branch "master"]
+    remote = origin
+    merge = refs/heads/master</code></pre>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </section>
+        </section>
 
+        <section>
+            <section data-markdown>
+                # Config
             </section>
             <section data-markdown>
+                ## Global `~/.gitconfig`
+
+                    $ git config --global -l
+                    user.name=Anders Janmyr
+                    user.email=anders@janmyr.com
+                    ...
+                ## Local `./.git/config`
+
+                    $ git config --local -l
+                    remote.origin.url=git@github.com:andersjanmyr/git-...
+                    remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
+                    ...
+            </section>
+            <section data-markdown>
+                # Automatic rebase pull
+
+                    $ git config branch.master.rebase true
+
+                Sets
+
+                    [branch "master"]
+                    rebase = true
+
             </section>
             <section data-markdown>
                 # git-bash-completion
+
+                    if [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]
+                    then
+                        . /usr/local/etc/bash_completion.d/git-completion.bash
+                    elif [ -f /etc/bash_completion.d/git ]; then
+                        . /etc/bash_completion.d/git
+                    fi
+
             </section>
             <section data-markdown>
-                # Prompt
-                ## `__git_ps1`
+                # Git Prompt
 
                     function prompt {
-                        local sha=$(git rev-parse --short HEAD 2>/dev/null)
-                        export PS1="[\!:\W ${sha}$(__git_ps1 '@%s')]\n$sign "
+                        local sha=$(git rev-parse --short HEAD)
+                        export PS1="[\!:\W ${sha}$(__git_ps1 '@%s')]\n$ "
                     }
+                    PROMPT_COMMAND='prompt'
 
                     export GIT_PS1_SHOWDIRTYSTATE=true
                     export GIT_PS1_SHOWUNTRACKEDFILES=true
                     export GIT_PS1_SHOWUPSTREAM="auto"
-                    PROMPT_COMMAND='prompt'
 
-                    [511:git-tips-and-tricks 50e6e0c@master *%>]
+                    [511:git-tips-and-tricks 50e6e0c@master *%=]
                     $
-</section>
+            </section>
+            <section data-markdown>
+                # Git Prompt
+                ## `__git_ps1`
+
+                    if [ -f /usr/local/etc/bash_completion.d/git-prompt.sh ]
+                    then
+                    . /usr/local/etc/bash_completion.d/git-prompt.sh
+                    fi
+
+            </section>
+            <section data-markdown>
+                # git config alias
+
+                    $ git config alias.au 'add -u'
+
+                Sets
+
+                    [alias]
+                    au = add -u
+            </section>
         </section>
 
         <section>

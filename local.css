@@ -9,3 +9,7 @@
     text-transform: none;
 }
 
+.reveal table pre {
+    margin: 20px 0;
+}
+
