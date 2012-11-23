@@ -94,6 +94,12 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
             </section>
             <section data-markdown>
                 # git commit --amend
+
+                    # Amend latest commit with files in index
+                    $ git commit --amend
+
+                    # And resuse the commit message
+                    $ git commit --amend -C HEAD
             </section>
             <section data-markdown>
                 # git rebase -i
@@ -105,6 +111,8 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
             </section>
             <section data-markdown>
                 # git reset
+
+
             </section>
             <section data-markdown>
                 # git add -p
@@ -199,8 +207,6 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
                     093c13e9 (Anders Janmyr 2012-01-24 17:26:09 +0100  4) var Security = require('dynamo-db').Security;
                     ba6c4d8b (Anders Janmyr 2012-01-25 09:46:52 +0100  5)
                     ^b96c68b (Anders Janmyr 2012-01-21 12:33:50 +0100  6) var access = process.env['S3_KEY'];
-                    ^b96c68b (Anders Janmyr 2012-01-21 12:33:50 +0100  7) var secret = process.env['S3_SECRET'];
-                    558b8e7f (Anders Janmyr 2012-01-25 16:53:52 +0100  8)
             </section>
             <section data-markdown>
                 # What commits contain the string?
@@ -296,20 +302,35 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
 
                     [alias]
                     au = add -u
+
+                *Use `--global` for aliases*
+
             </section>
             <section data-markdown>
                 # alias git amend
 
-                    alias.amend=commit --amend -C HEAD
+                    $ git config alias.amend 'commit --amend -C HEAD'
 
                 ## Explanation
+                    commit  = The commit command
                     --amend = Amend the changes to previous commit
                     -C HEAD = Reuse the commit message
+
+                    # Alternative
+                    -c HEAD = Lets you edit the message
             </section>
             <section data-markdown>
                 # alias git ld
 
-                    git --global config alias.ld 'log --diff-filter=D --summary'
+                    git config alias.ld 'log --diff-filter=D --summary'
+
+                Show commits with deleted files
+
+                ## Explanation
+                    log             = The log command
+                    --diff-filter=D = Only commits with deleted files
+                    --summary       = Show changes such as deletion, etc
+
             </section>
             <section data-markdown>
                 # alias git hist
@@ -318,7 +339,7 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
             <section data-markdown>
                 # git hist explained
 
-                    $ git --global config alias.hist 'log --pretty='format:%C(blue)%h%C(red)%d%C(yellow) %s %C(green)%an%Creset, %ar' --graph'
+                    $ git config alias.hist 'log --pretty='format:%C(blue)%h%C(red)%d%C(yellow) %s %C(green)%an%Creset, %ar' --graph'
 
                 ## Explanation
 
@@ -416,20 +437,52 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
         <section>
             <section data-markdown>
                 # Github
-                ![github](git-dag.jpg)
+                ![github](github.png)
             </section>
             <section data-markdown>
                 # The `hub` command
 
                     $ brew install hub
+                    $ alias git=hub
             </section>
             <section data-markdown>
+                # hub create
+
+                    $ git create
+                    [ repo created on GitHub ]
+                      git remote add origin git@github.com:YOUR_USER/CURRENT_REPO.git
             </section>
             <section data-markdown>
+                # hub clone
+
+                    $ git clone schacon/ticgit
+                      git clone git://github.com/schacon/ticgit.git
+
             </section>
             <section data-markdown>
+                # hub remote add
+
+                    $ git remote add origin anders
+                      git remote add origin git://github.com/anders/CURRENT_REPO.git
             </section>
             <section data-markdown>
+                # hub push
+                    $ git push origin,staging,qa master
+                      git push origin master
+                      git push staging master
+                      git push qa master
+            </section>
+            <section data-markdown>
+                # hub pull-request
+                    # while on a topic branch called "feature":
+                    $ git pull-request
+                    [ opens text editor to edit title and body for the request ]
+                    [ opened pull request on GitHub for "YOUR_USER:feature" ]
+            </section>
+            <section data-markdown>
+                # hub browse
+                    $ git browse -- issues
+                      open https://github.com/YOUR_USER/CURRENT_REPO/issues
             </section>
         </section>
 
