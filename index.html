@@ -110,6 +110,31 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
                 ![cherrypick.png](cherrypick.png)
             </section>
             <section data-markdown>
+                # git add -p
+
+                    # Enter add patch mode
+                    $ git add -p
+
+                    Stage this hunk [y,n,q,a,d,/,k,K,j,J,g,e,?]? ?
+
+            </section>
+            <section data-markdown>
+                # git add -p ?
+
+                    y - stage this hunk
+                    n - do not stage this hunk
+                    q - quit; do not stage this hunk nor any other
+                    a - stage this hunk and all later in the file
+                    d - do not stage this hunk nor any later in the file
+                    g - select a hunk to go to
+                    / - search for a hunk matching the given regex
+                    j - leave this hunk undecided, see next undecided hunk
+                    J - leave this hunk undecided, see next hunk
+                    k - leave this hunk undecided, see previous undecided
+                    s - split the current hunk into smaller hunks
+                    e - manually edit the current hunk
+            </section>
+            <section data-markdown>
                 # git reset
 
                     # Moves the HEAD pointer back 4 steps
@@ -126,26 +151,27 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
                     $ git reset --hard HEAD~4
             </section>
             <section data-markdown>
-                # git add -p
-
-                    # Moves the HEAD pointer back 4 steps
-                    $ git add -p
-
-                    # Does NOT change working dir
-                    $ git reset --mixed HEAD~4
-
-                    # And adds the files to the index
-                    # Does NOT change working dir
-                    $ git reset --soft HEAD~4
-
-                    # Also CHANGES working dir
-                    $ git reset --hard HEAD~4
-            </section>
-            <section data-markdown>
                 # git reflog
+
+                Contains references to where `HEAD` has been.
+
+                    $ git reflog
+                    eb06230 HEAD@{0}: reset: moving to master
+                    ccfaa12 HEAD@{1}: reset: moving to head~
+                    7b8a6cb HEAD@{2}: reset: moving to head~
+                    eb06230 HEAD@{3}: checkout: moving from master to an
+                    eb06230 HEAD@{4}: commit: Added reset
+                    7b8a6cb HEAD@{5}: reset: moving to 7b8a6cb59edbfde
+                    69c6f00 HEAD@{6}: reset: moving to 69c6f00
+                    1910819 HEAD@{7}: reset: moving to 1910819
             </section>
             <section data-markdown>
                 # git log -g
+
+                Contains the log for the reflog
+
+                ![git-log-g](git-log-g.png)
+
             </section>
         </section>
         <section>
