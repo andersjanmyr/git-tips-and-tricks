@@ -45,6 +45,7 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
         <section>
             <section data-markdown>
                 # Basics
+                ![basics](basics.jpg)
             </section>
             <section data-markdown>
                 # Nothing Committed is *Ever* Lost
@@ -52,9 +53,6 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
             <section data-markdown>
                 # DAG
                 ## Directed Acyclic Graph
-            </section>
-            <section data-markdown>
-                # DAG
                 ![git-dag](git-dag.jpg)
             </section>
             <section data-markdown>
@@ -88,6 +86,7 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
         <section>
             <section data-markdown>
                 # History
+                ![history](history.jpg)
             </section>
             <section data-markdown>
                 # git rebase
@@ -120,6 +119,7 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
         <section>
             <section data-markdown>
                 # Finding in Git
+                ![finding](finding.jpg)
             </section>
             <section data-markdown>
                 # Where is my file?
@@ -219,6 +219,121 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
             </section>
         </section>
 
+
+        <section>
+            <section data-markdown>
+                # Config
+                ![config](config.png)
+            </section>
+            <section data-markdown>
+                ## Global `~/.gitconfig`
+
+                    $ git config --global -l
+                    user.name=Anders Janmyr
+                    user.email=anders@janmyr.com
+                    ...
+                ## Local `./.git/config`
+
+                    $ git config --local -l
+                    remote.origin.url=git@github.com:andersjanmyr/git-...
+                    remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
+                    ...
+            </section>
+            <section data-markdown>
+                # Automatic rebase pull
+
+                    $ git config branch.master.rebase true
+
+                Sets
+
+                    [branch "master"]
+                    rebase = true
+
+            </section>
+            <section data-markdown>
+                # git-bash-completion
+
+                    if [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]
+                    then
+                        . /usr/local/etc/bash_completion.d/git-completion.bash
+                    elif [ -f /etc/bash_completion.d/git ]; then
+                        . /etc/bash_completion.d/git
+                    fi
+
+            </section>
+            <section data-markdown>
+                # Git Prompt
+
+                    function prompt {
+                        local sha=$(git rev-parse --short HEAD)
+                        export PS1="[\!:\W ${sha}$(__git_ps1 '@%s')]\n$ "
+                    }
+                    PROMPT_COMMAND='prompt'
+
+                    export GIT_PS1_SHOWDIRTYSTATE=true
+                    export GIT_PS1_SHOWUNTRACKEDFILES=true
+                    export GIT_PS1_SHOWUPSTREAM="auto"
+
+                    [511:git-tips-and-tricks 50e6e0c@master *%=]
+                    $
+            </section>
+            <section data-markdown>
+                # Git Prompt
+                ## `__git_ps1`
+
+                    if [ -f /usr/local/etc/bash_completion.d/git-prompt.sh ]
+                    then
+                    . /usr/local/etc/bash_completion.d/git-prompt.sh
+                    fi
+
+            </section>
+            <section data-markdown>
+                # git config alias
+
+                    $ git --global config alias.au 'add -u'
+
+                Sets
+
+                    [alias]
+                    au = add -u
+            </section>
+            <section data-markdown>
+                # alias git amend
+
+                    alias.amend=commit --amend -C HEAD
+
+                ## Explanation
+                    --amend = Amend the changes to previous commit
+                    -C HEAD = Reuse the commit message
+            </section>
+            <section data-markdown>
+                # alias git ld
+
+                    git --global config alias.ld 'log --diff-filter=D --summary'
+            </section>
+            <section data-markdown>
+                # alias git hist
+                ![git-hist](git-hist.png)
+            </section>
+            <section data-markdown>
+                # git hist explained
+
+                    $ git --global config alias.hist 'log --pretty='format:%C(blue)%h%C(red)%d%C(yellow) %s %C(green)%an%Creset, %ar' --graph'
+
+                ## Explanation
+
+                <pre><code>log               = The log command
+                --graph           = Text-based graphical representation
+                --pretty='format' = Format according to spec
+                %C(color)         = Change color
+                %h&nbsp;               = Abbreviated commit hash (6b266c2)
+                %d&nbsp;               = Ref names (HEAD, origin/master)
+                %s&nbsp;               = Subject (first line of comment)
+                %an               = Author name
+                %ar               = Author date, relative</code></pre>
+            </section>
+
+        </section>
         <section>
             <section data-markdown>
                 # Under the Hood
@@ -298,93 +413,15 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
                 </table>
             </section>
         </section>
-
-        <section>
-            <section data-markdown>
-                # Config
-            </section>
-            <section data-markdown>
-                ## Global `~/.gitconfig`
-
-                    $ git config --global -l
-                    user.name=Anders Janmyr
-                    user.email=anders@janmyr.com
-                    ...
-                ## Local `./.git/config`
-
-                    $ git config --local -l
-                    remote.origin.url=git@github.com:andersjanmyr/git-...
-                    remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
-                    ...
-            </section>
-            <section data-markdown>
-                # Automatic rebase pull
-
-                    $ git config branch.master.rebase true
-
-                Sets
-
-                    [branch "master"]
-                    rebase = true
-
-            </section>
-            <section data-markdown>
-                # git-bash-completion
-
-                    if [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]
-                    then
-                        . /usr/local/etc/bash_completion.d/git-completion.bash
-                    elif [ -f /etc/bash_completion.d/git ]; then
-                        . /etc/bash_completion.d/git
-                    fi
-
-            </section>
-            <section data-markdown>
-                # Git Prompt
-
-                    function prompt {
-                        local sha=$(git rev-parse --short HEAD)
-                        export PS1="[\!:\W ${sha}$(__git_ps1 '@%s')]\n$ "
-                    }
-                    PROMPT_COMMAND='prompt'
-
-                    export GIT_PS1_SHOWDIRTYSTATE=true
-                    export GIT_PS1_SHOWUNTRACKEDFILES=true
-                    export GIT_PS1_SHOWUPSTREAM="auto"
-
-                    [511:git-tips-and-tricks 50e6e0c@master *%=]
-                    $
-            </section>
-            <section data-markdown>
-                # Git Prompt
-                ## `__git_ps1`
-
-                    if [ -f /usr/local/etc/bash_completion.d/git-prompt.sh ]
-                    then
-                    . /usr/local/etc/bash_completion.d/git-prompt.sh
-                    fi
-
-            </section>
-            <section data-markdown>
-                # git config alias
-
-                    $ git config alias.au 'add -u'
-
-                Sets
-
-                    [alias]
-                    au = add -u
-            </section>
-        </section>
-
         <section>
             <section data-markdown>
                 # Github
-                ## The `hub` command
-
-                    $ brew install hub
+                ![github](git-dag.jpg)
             </section>
             <section data-markdown>
+                # The `hub` command
+
+                    $ brew install hub
             </section>
             <section data-markdown>
             </section>
