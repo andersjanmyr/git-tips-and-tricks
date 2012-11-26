@@ -419,6 +419,26 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
             <section data-markdown>
                 # Shell functions
                 ## When an alias can't cut it
+            </section>
+            <section data-markdown>
+                ## `g()`
+
+                    # `g` is short for git, defaults to `git s` (status)
+                    function g() {
+                        local cmd=${1-s}
+                        shift
+                        git $cmd $@
+                    }
+
+                ### Usage
+                    $ g
+                    ## master
+                    M README.md
+
+                    $ g log
+            </section>
+            <section data-markdown>
+                ## `gg()`
 
                     # Commit changes and quote all args as message
                     function gg() {
@@ -432,8 +452,122 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
         </section>
         <section>
             <section data-markdown>
+                # Other Useful Stuff
+                ![other-stuff](other-useful-stuff.jpg)
+            </section>
+            <section data-markdown>
+                # List Tagged Commits
+                ## `git log --simplify-by-decoration`
+                ![simplify-log](simplify-by-decoration.png)
+            </section>
+            <section data-markdown>
+                ## `stash save [-u] [message]`
+
+                    $ git stash save -u Extracted new methods
+                    Saved working directory and index state On master: Extracted new methods
+                    HEAD is now at a9aeba6 Merge branch 'deprecate-calculations-with-block'
+
+                    -u - Also stash untracked
+
+
+            </section>
+            <section data-markdown>
+                ## `stash pop` or `apply`
+
+                    $ stash pop
+                    # On branch master
+                    # Your branch is behind 'origin/master' by 6 commits...
+                    #
+                    # Changes not staged for commit:
+                    #
+                    #	modified:   activerecord/test/cases/has...
+                    #
+                    Dropped refs/stash@{0} (c6b45e5b6fa0de7c...)
+
+            </section>
+            <section data-markdown>
+                ## --assume-unchanged
+
+                    $ git status --short
+                    M config/database.yml
+
+                    $ git update-index --assume-unchanged config/database.yml
+
+                    $ git status --short
+                    $
+            </section>
+            <section data-markdown>
+                ## --no-assume-unchanged
+
+                    $ git update-index --no-assume-unchanged config/database.yml
+
+                    $ git status --short
+                    M config/database.yml
+            </section>
+            <section data-markdown>
+            </section>
+        </section>
+        <section>
+            <section data-markdown>
+                # Github
+                ![github](github.png)
+            </section>
+            <section data-markdown>
+                # The `hub` command
+
+                    $ brew install hub
+                    $ alias git=hub
+            </section>
+            <section data-markdown>
+                # hub create
+
+                    $ git create
+                    [ repo created on GitHub ]
+                      git remote add origin git@github.com:YOUR_USER/CURRENT_REPO.git
+            </section>
+            <section data-markdown>
+                # hub clone
+
+                    $ git clone schacon/ticgit
+                      git clone git://github.com/schacon/ticgit.git
+
+            </section>
+            <section data-markdown>
+                # hub remote add
+
+                    $ git remote add origin anders
+                      git remote add origin git://github.com/anders/CURRENT_REPO.git
+            </section>
+            <section data-markdown>
+                # hub push
+                    $ git push origin,staging,qa master
+                      git push origin master
+                      git push staging master
+                      git push qa master
+            </section>
+            <section data-markdown>
+                # hub pull-request
+                    # while on a topic branch called "feature":
+                    $ git pull-request
+                    [ opens text editor to edit title and body for the request ]
+                    [ opened pull request on GitHub for "YOUR_USER:feature" ]
+            </section>
+            <section data-markdown>
+                # hub browse
+                    $ git browse -- issues
+                      open https://github.com/YOUR_USER/CURRENT_REPO/issues
+            </section>
+        </section>
+
+        <section>
+            <section data-markdown>
                 # Under the Hood
-                ![](under-the-hood-sally-storey-jones.jpg)
+                ![under-hood](under-the-hood-sally-storey-jones.jpg)
+
+            </section>
+            <section data-markdown>
+                # Git Objects
+                ![git-objects](git-objects.png)
 
             </section>
             <section data-markdown>
@@ -509,64 +643,24 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
                 </table>
             </section>
         </section>
+
         <section>
             <section data-markdown>
-                # Github
-                ![github](github.png)
+                <img src='stupid-questions.jpg' align='right'></img>
+                # Questions
+                ### http://anders.janmyr.com
+                ### @andersjanmyr
+                ### anders.janmyr@jayway.com
             </section>
             <section data-markdown>
-                # The `hub` command
+                # Blogs
+                ## Config
 
-                    $ brew install hub
-                    $ alias git=hub
-            </section>
-            <section data-markdown>
-                # hub create
+                ## Finding
 
-                    $ git create
-                    [ repo created on GitHub ]
-                      git remote add origin git@github.com:YOUR_USER/CURRENT_REPO.git
-            </section>
-            <section data-markdown>
-                # hub clone
-
-                    $ git clone schacon/ticgit
-                      git clone git://github.com/schacon/ticgit.git
+                http://goo.gl/qQVsP
 
             </section>
-            <section data-markdown>
-                # hub remote add
-
-                    $ git remote add origin anders
-                      git remote add origin git://github.com/anders/CURRENT_REPO.git
-            </section>
-            <section data-markdown>
-                # hub push
-                    $ git push origin,staging,qa master
-                      git push origin master
-                      git push staging master
-                      git push qa master
-            </section>
-            <section data-markdown>
-                # hub pull-request
-                    # while on a topic branch called "feature":
-                    $ git pull-request
-                    [ opens text editor to edit title and body for the request ]
-                    [ opened pull request on GitHub for "YOUR_USER:feature" ]
-            </section>
-            <section data-markdown>
-                # hub browse
-                    $ git browse -- issues
-                      open https://github.com/YOUR_USER/CURRENT_REPO/issues
-            </section>
-        </section>
-
-        <section data-markdown>
-            <img src='stupid-questions.jpg' align='right'></img>
-            # Questions
-            ### http://anders.janmyr.com
-            ### @andersjanmyr
-            ### anders.janmyr@jayway.com
         </section>
     </div>
 
