@@ -76,7 +76,7 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
             <section data-markdown>
                 # Branch
                 ## Pointer to a commit
-                ### Moves with most commands
+                ### A sticky label
             </section>
             <section data-markdown>
                 # Nothing Committed is *Ever* Lost
@@ -505,6 +505,52 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
                     M config/database.yml
             </section>
             <section data-markdown>
+                # Submodules
+            </section>
+            <section data-markdown>
+                ## `git submodule add`
+
+                    $ git submodule add git://github.com/hakimel/reveal.js.git
+                    # Clones and adds a repo as a submodule.
+
+                Added in .git/config
+
+                    [submodule "reveal.js"]
+                        url = git://github.com/hakimel/reveal.js.git
+
+                Added in .gitmodules
+
+                    [submodule "reveal.js"]
+                        path = reveal.js
+                        url = git://github.com/hakimel/reveal.js.git
+            </section>
+            <section data-markdown>
+                ## `git submodule update`
+
+                    $ git submodule update
+                    # Updates the submodules if they have changed.
+            </section>
+            <section data-markdown>
+                ## `git submodule foreach`
+
+                    $ git submodule foreach git pull origin master
+                    # Updates each version to the latest version
+            </section>
+            <section data-markdown>
+                ## `git submodule rm`
+
+                *DOES NOT EXIST*
+
+                * Delete the relevant section from the .gitmodules file.
+                * Delete the relevant section from .git/config.
+                * Run git rm --cached path_to_submodule (no trailing slash).
+                * Commit and delete the now untracked submodule files.
+
+
+                ### Or use
+
+                script `git-submodule-rm`  -- Google it!
+
             </section>
         </section>
         <section>
@@ -563,6 +609,11 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
             <section data-markdown>
                 # Under the Hood
                 ![under-hood](under-the-hood-sally-storey-jones.jpg)
+
+            </section>
+            <section data-markdown>
+                # Git Storage
+                ![git-storage](git-storage.png)
 
             </section>
             <section data-markdown>
@@ -655,6 +706,8 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
             <section data-markdown>
                 # Blogs
                 ## Config
+
+                http://goo.gl/sS8Kv
 
                 ## Finding
 
