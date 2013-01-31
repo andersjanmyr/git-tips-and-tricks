@@ -188,26 +188,27 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
                 ![finding](finding.jpg)
             </section>
             <section data-markdown>
-                # Where is my file?
+                ## Where is my file?
 
                     $ git ls-files | grep security
+
                     lib/dynamo-db/security.js
-                    test/security-test.jsP
+                    test/security-test.js
             </section>
             <section data-markdown>
-                # In what file can I find "crypt"?
+                ## In what file can I find "crypt"?
 
                     $ git grep -n crypt
+
                     lib/dynamo-db/security.js:2:var crypto = require('crypto');
                     lib/dynamo-db/security.js:15:   var hmac = crypto.createHmac('sha256', key);
 
                 ### `-n` - show line numbers
             </section>
             <section data-markdown>
-                # Find "type"
-                ## in revisions `master` and `8f0fb7f`.
+                ## Find "type" in revisions `master` and `8f0fb7f`.
 
-                    git grep -l type  master 8f0fb7f
+                    git grep -l type master 8f0fb7f
                     master:lib/dynamo-db/index.js
                     master:lib/dynamo-db/security.js
                     master:package.json
@@ -217,9 +218,10 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
                 ### `-l` - show filenames only
             </section>
             <section data-markdown>
-                # Who deleted my file?
+                ## Who deleted my file?
 
                     $ git log --diff-filter=D -- test/create-table-test.js
+
                     commit ba6c4d8bc165b8fb8208979c3e5513bd53477d51
                     Author: Anders Janmyr anders@janmyr.com
                     Date:   Wed Jan 25 09:46:52 2012 +0100
@@ -230,10 +232,10 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
                 ### --summary - adds information about the files
             </section>
             <section data-markdown>
-                # When was it added?
-                ## with partial name "inte"
+                ## When was the file added with a name that *contains* 'int'?
 
-                    $ git log --diff-filter=A --name-status |grep -C 6 inte
+                    $ git log --diff-filter=A --name-status |grep -C 6 int
+
                     commit 09420cfea8c7b569cd47f690104750fec358a10a
                     Author: Anders Janmyr anders@janmyr.com
                     Date:   Tue Jan 24 16:23:52 2012 +0100
@@ -244,35 +246,38 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
 
                     commit 205db3965dec6c2c4c7b2bb75387a591d49e1951
                     Author: Anders Janmyr anders@janmyr.com
+
+                ### --name-status - Short info about affected files
             </section>
             <section data-markdown>
-                # Who changed that line?
+                ## Who changed that line?
 
                     $ git blame test/security-test.js
+
                     205db396 (Anders Janmyr 2012-01-21 10:03:59 +0100  1) var vows = require('vows'),
                     205db396 (Anders Janmyr 2012-01-21 10:03:59 +0100  2)     assert = require('assert');
-                    205db396 (Anders Janmyr 2012-01-21 10:03:59 +0100  3)
-                    09420cfe (Anders Janmyr 2012-01-24 16:23:52 +0100  4) var access = 'access';
-                    09420cfe (Anders Janmyr 2012-01-24 16:23:52 +0100  5) var secret = 'secret';
+                    09420cfe (Anders Janmyr 2012-01-24 16:23:52 +0100  3) var access = 'access';
+                    09420cfe (Anders Janmyr 2012-01-24 16:23:52 +0100  4) var secret = 'secret';
             </section>
             <section data-markdown>
-                # Who deleted that line?
+                ## Who deleted that line?
 
                     $ git blame --reverse head~6..head security-test.js
+
                     558b8e7f (Anders Janmyr 2012-01-25 16:53:52 +0100  1) var vows = require('vows'),
                     558b8e7f (Anders Janmyr 2012-01-25 16:53:52 +0100  2)     assert = require('assert');
-                    558b8e7f (Anders Janmyr 2012-01-25 16:53:52 +0100  3)
-                    093c13e9 (Anders Janmyr 2012-01-24 17:26:09 +0100  4) var Security = require('dynamo-db').Security;
-                    ba6c4d8b (Anders Janmyr 2012-01-25 09:46:52 +0100  5)
-                    ^b96c68b (Anders Janmyr 2012-01-21 12:33:50 +0100  6) var access = process.env['S3_KEY'];
+                    093c13e9 (Anders Janmyr 2012-01-24 17:26:09 +0100  3) var Security = require('dynamo-db').Security;
+                    ba6c4d8b (Anders Janmyr 2012-01-25 09:46:52 +0100  4)
+                    ^b96c68b (Anders Janmyr 2012-01-21 12:33:50 +0100  5) var access = process.env['S3_KEY'];
             </section>
             <section data-markdown>
-                # What commits contain the string?
+                ## What commits contain the string 'aws'?
 
                     $ git log -Saws --diff-filter=M --patch
+
                     commit b96c68b839f204b310b79570bc3d27dc93cff588
 
-                    diff --git a/lib/dynamo-db/security.js b/lib/dynamo-db/security.js
+                    diff --git a/lib/dynamo-db/security.js b/lib/dyna...
                     @@ -57,9 +58,10 @@ mod.url = function(host, path,...
 
                     var extParams = _.extend({}, this...
@@ -280,6 +285,8 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
                     -  return request({ method: method,...
                     +  var signedParams = this.signedPa...
                     ...
+                ### -S string - Search for string
+                ### -G regex  - Search for regex
             </section>
         </section>
 
