@@ -560,6 +560,13 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
                     # Updates the submodules if they have changed.
             </section>
             <section data-markdown>
+                ## `git submodule sync`
+
+                    $ git submodule sync
+                    # Updates `.git/config` from `.gitmodules`
+                    # useful when submodule URLs change upstream
+            </section>
+            <section data-markdown>
                 ## `git submodule foreach`
 
                     $ git submodule foreach git pull origin master
@@ -572,7 +579,7 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
 
                 * Delete the relevant section from the .gitmodules file.
                 * Delete the relevant section from .git/config.
-                * Run git rm --cached path_to_submodule (no trailing slash).
+                * Run git rm --cached path-to-submodule (no trailing slash).
                 * Commit and delete the now untracked submodule files.
 
 
