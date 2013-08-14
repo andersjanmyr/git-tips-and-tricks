@@ -562,12 +562,7 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
                 ## `git submodule add -b master`
 
                     $ git submodule add -b master git://github.com/hakimel/reveal.js.git
-                    # Clones and adds a repo as a submodule.
-
-                Added in .git/config
-
-                    [submodule "reveal.js"]
-                        url = git://github.com/hakimel/reveal.js.git
+                    # Clones and adds a repo as a tracked submodule
 
                 Added in .gitmodules
 
@@ -580,7 +575,13 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
                 ## `git submodule update`
 
                     $ git submodule update
-                    # Updates the submodules if they have changed.
+                    # Updates the submodules
+
+                ## `git submodule update --remote`
+
+                    $ git submodule update --remote
+                    # Updates the submodules if the branch has changed
+                    # Updates the files, but the change has to be committed
             </section>
             <section data-markdown>
                 ## `git submodule sync`
