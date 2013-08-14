@@ -559,6 +559,24 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
                         url = git://github.com/hakimel/reveal.js.git
             </section>
             <section data-markdown>
+                ## `git submodule add -b master`
+
+                    $ git submodule add -b master git://github.com/hakimel/reveal.js.git
+                    # Clones and adds a repo as a submodule.
+
+                Added in .git/config
+
+                    [submodule "reveal.js"]
+                        url = git://github.com/hakimel/reveal.js.git
+
+                Added in .gitmodules
+
+                    [submodule "reveal.js"]
+                        path = reveal.js
+                        url = git://github.com/hakimel/reveal.js.git
+                        branch = master
+            </section>
+            <section data-markdown>
                 ## `git submodule update`
 
                     $ git submodule update
