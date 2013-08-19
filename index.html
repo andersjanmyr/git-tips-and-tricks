@@ -225,6 +225,19 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
                     test/security-test.js
             </section>
             <section data-markdown>
+                ## What message contains "fix"?
+                    $ git log --oneline --grep=fix -i
+
+                    7eeb362 Whitespace fix
+                    e72c673 Load images as background images to fix scaling
+                    ec5576b Fixed broken integration test, added test case
+                    22e0a54 Fixed broken unit tests
+                    99b18c3 Clean up qr resource leak, and fixed unit test
+                    f8d9537 Pass qrstore in socket.io init, fixed broken test
+
+                ### `-i` - Ignore case
+            </section>
+            <section data-markdown>
                 ## In what file can I find "crypt"?
 
                     $ git grep -n crypt
