@@ -68,13 +68,13 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
                 # Nothing Committed is *Ever* Lost
             </section>
             <section data-markdown>
-                # Git Storage
+                ## Git Storage
                 ![git-storage](git-storage.png)
 
             </section>
             <section data-markdown>
-                # DAG
-                ## Directed Acyclic Graph
+                ## DAG
+                ### Directed Acyclic Graph
                 ![git-dag](git-dag.jpg)
             </section>
             <section data-markdown>
@@ -89,17 +89,17 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
                 * Working Dir
             </section>
             <section data-markdown>
-                # `git add`
-                ## Adds files to the index
+                ## `git add`
+                ### Adds files to the index
             </section>
             <section data-markdown>
-                # `git commit`
-                ## Adds index files to the HEAD
+                ## `git commit`
+                ### Adds index files to the HEAD
             </section>
             <section data-markdown>
-                # `git reset`
-                ## Moves the head pointer
-                ### And optionally moves changes to and from the index
+                ## `git reset`
+                ###Moves the head pointer
+                #### And optionally moves changes to and from the index
             </section>
             <section data-markdown>
                 # Nothing Committed is *Ever* Lost
@@ -112,13 +112,13 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
                 ![history](history.jpg)
             </section>
             <section data-markdown>
-                # git rebase
+                ## `git rebase`
                 ![git-rebase.png](git-rebase.png)
 
                 `git rebase` does NOT change the committed files
             </section>
             <section data-markdown>
-                # git commit --amend
+                ## `git commit --amend`
 
                     # Amend latest commit with files in index
                     $ git commit --amend
@@ -129,25 +129,25 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
                 `git commit --amend` does NOT change the committed files
             </section>
             <section data-markdown>
-                # git rebase -i
+                ## `git rebase -i`
                 ![git-rebase-interactive.png](git-rebase-interactive.png)
 
                 `git rebase` does NOT change the committed files
             </section>
             <section data-markdown>
-                # git cherry-pick
+                ## `git cherry-pick`
                 ![cherrypick.png](cherrypick.png)
 
                 `git cherry-pick` does NOT change the committed files
             </section>
             <section data-markdown>
-                # git add -p
+                ## `git add -p`
                 ![git-add-p](git-add-p.png)
 
 
             </section>
             <section data-markdown>
-                # git add -p ?
+                ## `git add -p` ?
 
                     y - stage this hunk
                     n - do not stage this hunk
@@ -163,7 +163,7 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
                     e - manually edit the current hunk
             </section>
             <section data-markdown>
-                # git reset
+                ## `git reset`
 
                     # Moves the HEAD pointer back 4 steps
                     $ git reset HEAD~4
@@ -181,7 +181,7 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
                 `git reset` does NOT change the committed files
             </section>
             <section data-markdown>
-                # git reflog
+                ## `git reflog`
 
                 Contains references to where `HEAD` has been.
 
@@ -196,7 +196,7 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
                     1910819 HEAD@{7}: reset: moving to 1910819
             </section>
             <section data-markdown>
-                # git log -g
+                ## `git log -g`
 
                 Contains the log for the reflog
 
@@ -356,7 +356,7 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
                     ...
             </section>
             <section data-markdown>
-                # Automatic rebase pull
+                ## Automatic rebase pull
 
                     $ git config branch.master.rebase true
 
@@ -367,7 +367,7 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
 
             </section>
             <section data-markdown>
-                # git-bash-completion
+                ## git-bash-completion
 
                     if [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]
                     then
@@ -378,7 +378,7 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
 
             </section>
             <section data-markdown>
-                # Git Prompt
+                ## Git Prompt
 
                     function prompt {
                         local sha=$(git rev-parse --short HEAD)
@@ -394,7 +394,7 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
                     $
             </section>
             <section data-markdown>
-                # Git Prompt
+                ## Git Prompt
                 ## `__git_ps1`
 
                     if [ -f /usr/local/etc/bash_completion.d/git-prompt.sh ]
@@ -404,7 +404,7 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
 
             </section>
             <section data-markdown>
-                # git config alias
+                ## git config alias
 
                     $ git --global config alias.au 'add -u'
 
@@ -422,7 +422,7 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
 
             </section>
             <section data-markdown>
-                # alias git amend
+                ## alias git amend
 
                     $ git config alias.amend 'commit --amend -C HEAD'
 
@@ -435,7 +435,7 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
                     -c HEAD = Lets you edit the message
             </section>
             <section data-markdown>
-                # alias git ld
+                ## alias git ld
 
                     git config alias.ld 'log --diff-filter=D --summary'
 
@@ -448,11 +448,11 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
 
             </section>
             <section data-markdown>
-                # alias git hist
+                ## alias git hist
                 ![git-hist](git-hist.png)
             </section>
             <section data-markdown>
-                # git hist explained
+                ## git hist explained
 
                     $ git config alias.hist 'log --pretty='format:%C(blue)%h%C(red)%d%C(yellow) %s %C(green)%an%Creset, %ar' --graph'
 
@@ -470,8 +470,8 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
             </section>
 
             <section data-markdown>
-                # Shell functions
-                ## When an alias can't cut it
+                ## Shell functions
+                ### When an alias can't cut it
             </section>
             <section data-markdown>
                 ## `g()`
@@ -509,8 +509,8 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
                 ![other-stuff](other-useful-stuff.jpg)
             </section>
             <section data-markdown>
-                # List Tagged Commits
-                ## `git log --simplify-by-decoration`
+                ## List Tagged Commits
+                ### `git log --simplify-by-decoration`
                 ![simplify-log](simplify-by-decoration.png)
             </section>
             <section data-markdown>
@@ -666,47 +666,47 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
                 ![github](github.png)
             </section>
             <section data-markdown>
-                # The `hub` command
+                ## The `hub` command
 
                     $ brew install hub
                     $ alias git=hub
             </section>
             <section data-markdown>
-                # hub create
+                ## `hub create`
 
                     $ git create
                     [ repo created on GitHub ]
                       git remote add origin git@github.com:YOUR_USER/CURRENT_REPO.git
             </section>
             <section data-markdown>
-                # hub clone
+                ## `hub clone`
 
                     $ git clone schacon/ticgit
                       git clone git://github.com/schacon/ticgit.git
 
             </section>
             <section data-markdown>
-                # hub remote add
+                ## `hub remote add`
 
                     $ git remote add origin anders
                       git remote add origin git://github.com/anders/CURRENT_REPO.git
             </section>
             <section data-markdown>
-                # hub push
+                ## `hub push`
                     $ git push origin,staging,qa master
                       git push origin master
                       git push staging master
                       git push qa master
             </section>
             <section data-markdown>
-                # hub pull-request
+                ## `hub pull-request`
                     # while on a topic branch called "feature":
                     $ git pull-request
                     [ opens text editor to edit title and body for the request ]
                     [ opened pull request on GitHub for "YOUR_USER:feature" ]
             </section>
             <section data-markdown>
-                # hub browse
+                ## `hub browse`
                     $ git browse -- issues
                       open https://github.com/YOUR_USER/CURRENT_REPO/issues
             </section>
@@ -721,18 +721,22 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
                 ### anders.janmyr@jayway.com
             </section>
             <section data-markdown>
-                # Blogs
-                ## Config
+                ## Resources
+                ### Config
 
                 http://goo.gl/sS8Kv
 
-                ## Finding
+                ### Finding
 
                 http://goo.gl/qQVsP
 
-                ## Presentation
+                ### Presentation
 
                 http://andersjanmyr.github.io/git-tips-and-tricks
+
+                ### `gitconfig`
+
+                http://goo.gl/dl3xiG
 
             </section>
         </section>
