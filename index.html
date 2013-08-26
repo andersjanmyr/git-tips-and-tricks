@@ -219,6 +219,8 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
                     b97bf68 HEAD@{5}: commit: Removed summary
                     bd6af0a HEAD@{6}: commit (amend): Removed everything but finding
                     2289c5f HEAD@{7}: merge finding: Fast-forward
+
+                ### `--oneline` - Oneline output format
             </section>
         </section>
         <section>
@@ -269,6 +271,21 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
                     8f0fb7f:package.json
 
                 ### `-l` - show filenames only
+            </section>
+            <section data-markdown>
+                ## What commits touched file 'Makefile'?
+
+                    $ git log --oneline Makefile
+
+                    c176cc0 Added deploy silent option to avoid tagging
+                    86edd1e Removed client side scripts from coverage run
+                    3a199d2 adds cdn caching for images, if env variable cdn
+                    20a66ed pass file arguments to mocha to run single test
+                    b46c077 Notify with growl when application is deployed
+                    044a954 Removed copying of old file
+                    7111636 Almost working with minification
+
+                ### `--oneline` - Oneline output format
             </section>
             <section data-markdown>
                 ## Who deleted my file?
