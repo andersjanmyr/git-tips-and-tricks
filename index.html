@@ -434,7 +434,7 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
             <section data-markdown>
                 ## git config alias
 
-                    $ git --global config alias.au 'add -u'
+                    $ git config --global alias.au 'add -u'
 
                 Sets
 
@@ -482,13 +482,13 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
             <section data-markdown>
                 ## git hist explained
 
-                    $ git config alias.hist 'log --pretty='format:%C(blue)%h%C(red)%d%C(yellow) %s %C(green)%an%Creset, %ar' --graph'
+                    $ git config alias.hist 'log --pretty="format:%C(blue)%h%C(red)%d%C(yellow) %s %C(green)%an%Creset, %ar" --graph'
 
                 ## Explanation
 
                 <pre><code>log               = The log command
                 --graph           = Text-based graphical representation
-                --pretty='format' = Format according to spec
+                --pretty="format" = Format according to spec
                 %C(color)         = Change color
                 %h&nbsp;               = Abbreviated commit hash (6b266c2)
                 %d&nbsp;               = Ref names (HEAD, origin/master)
